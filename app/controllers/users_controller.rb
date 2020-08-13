@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
 
     def new
-        @users = User.new
+        @user = User.new
     end
 
     
@@ -32,6 +32,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         if @user.update(user_params)
             flash[:notice] = "Your account information is successfully updated"
+            redirect_to users_path
         else
             render 'edit'
         end
